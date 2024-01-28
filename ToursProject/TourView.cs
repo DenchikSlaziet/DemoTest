@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using ToursProject.Context;
 using ToursProject.Context.Models;
@@ -16,10 +17,10 @@ namespace ToursProject
         {
             InitializeComponent();
             this.tour = tour;
-            InitialComponent();
+            InitialComponent(tour);
         }
 
-        private void InitialComponent()
+        private void InitialComponent(Tour tour)
         {
             labelTitle.Text = tour.Title;
             labelActual.Text = tour.IsActual ? "Актуален" : "Не актуален";
@@ -50,8 +51,19 @@ namespace ToursProject
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var form = new EditTour(tour);
-            form.ShowDialog();
+            using (var db = new ToursContext())
+            {
+                var tour1 = db.Tours.FirstOrDefault(x => x.Id == tour.Id);
+                var form = new EditTour(tour1);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    var ids = form.GetCheckedTypes();
+                    tour1.Types.Clear();
+                    tour1.Types = db.TypeTours.Where(x => ids.Contains(x.Id)).ToList();
+                    db.SaveChanges();
+                    InitialComponent(tour1);
+                }
+            }
         }
     }
 }

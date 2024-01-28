@@ -36,12 +36,6 @@ namespace ToursProject
                     checkedListBox1.SetItemChecked(i, true);
                 }
             }
-
-            using (var db = new ToursContext())
-            {
-                var country = db.Countries.FirstOrDefault(x => x.Code == tour.CountryCode);
-                comboBoxCountry.SelectedItem = comboBoxCountry.Items.IndexOf(country);
-            }
         }
 
         private void Initialize()
