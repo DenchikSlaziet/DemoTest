@@ -1,50 +1,129 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
+using System.Data.Entity;
+using ToursProject.Context;
 using ToursProject.Context.Models;
-using ToursProject.UserControls;
 
 namespace ToursProject
 {
     public partial class Form1 : Form
     {
+        private int allToursSum = 0;
         public Form1()
         {
             InitializeComponent();
-            var boxes = new List<UserView>();
-            var tours = new List<Tour>();
+            comboBoxType.DisplayMember = nameof(TypeTour.Name);
+            comboBoxType.ValueMember = nameof(TypeTour.Id);
+        }
 
-            for (int i = 0; i < 12; i++)
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            using(var db = new ToursContext())
             {
-                var tour = new Tour
+                var types = db.TypeTours.ToArray();
+                var defaultType = new TypeTour
                 {
-                    Id = i,
-                    Title = string.Join("",Guid.NewGuid().ToString().Take(7)),
-                    IsActual = true,
-                    Price = new Random().Next(100,100000),
-                    TicketCount = new Random().Next(1, 100)
+                    Id = -1,
+                    Name = "Все типы"
                 };
-                tours.Add(tour);
-            }
 
-            var y = 10;
-            var n = 0;
-            for (int i = 0; i < tours.Count; i++, n++)
-            {
-                if (i % 3 == 0 && i != 0)
+                comboBoxType.Items.AddRange(types);
+                comboBoxType.Items.Insert(0, defaultType);
+                comboBoxType.SelectedIndex = 0;
+
+                var tours = db.Tours.Include(x => x.Types).Include(x => x.Country).ToList();
+                allToursSum = 0;
+
+                foreach (var item in tours)
                 {
-                    n = 0;
-                    y += 100;
+                    var tourView = new TourView(item);
+                    tourView.Parent = flowLayoutPanel1;
+
+                    allToursSum += (int)(item.Price * item.TicketCount);
                 }
 
-                var box = new UserView(tours[i], 250 * n, y, i);
-                boxes.Add(box);
-                Controls.Add(box.Title);
-                Controls.Add(box.Price);
-                Controls.Add(box.CountTicket);
-                Controls.Add(box.Actual);
+                label3.Text = $"Общая сумма: {allToursSum}руб.";
             }
+        }
+
+        private void checkBoxActual_CheckedChanged(object sender, System.EventArgs e)
+        {
+            Filter();
+        }
+
+        private void comboBoxType_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            Filter();
+        }
+
+        private void textBoxSearch_TextChanged(object sender, System.EventArgs e)
+        {
+            Filter();
+        }
+
+        private void Filter()
+        {
+            if (comboBoxType.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedTypeId = ((TypeTour)comboBoxType.SelectedItem).Id;
+            allToursSum = 0;
+
+            foreach (var item in flowLayoutPanel1.Controls)
+            {
+                var visible = true;
+
+                if(item is TourView tourView)
+                {
+                    if(selectedTypeId != -1 
+                        && !tourView.tour.Types.Any(x => x.Id == selectedTypeId))
+                    {
+                        visible = false;
+                    }
+
+                    if(checkBoxActual.Checked && !tourView.tour.IsActual)
+                    {
+                        visible = false;
+                    }
+
+                    if(!string.IsNullOrWhiteSpace(textBoxSearch.Text) 
+                        && !tourView.tour.Title.Contains(textBoxSearch.Text))
+                    {
+                        visible = false;
+                    }
+
+                    if(visible)
+                    {
+                        allToursSum += (int)(tourView.tour.Price * tourView.tour.TicketCount);
+                    }
+                    tourView.Visible = visible;
+                }
+            }
+
+            label3.Text = $"Общая сумма: {allToursSum}руб.";
+        }
+
+        private void buttonAdd_Click(object sender, System.EventArgs e)
+        {
+            var form = new EditTour();
+
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                using(var db = new ToursContext())
+                {
+                    var ids = form.GetCheckedTypes();
+                    form.Tour.Types = db.TypeTours.Where(x => ids.Contains(x.Id)).ToList();
+                    db.Tours.Add(form.Tour);
+                    db.SaveChanges();
+                }
+            }
+
+            var tourView = new TourView(form.Tour);
+            tourView.Parent = flowLayoutPanel1;
+            allToursSum += (int)(tourView.tour.Price * tourView.tour.TicketCount);
+            label3.Text = $"Общая сумма: {allToursSum}руб.";
         }
     }
 }

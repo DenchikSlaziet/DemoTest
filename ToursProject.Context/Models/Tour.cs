@@ -10,6 +10,9 @@ namespace ToursProject.Context.Models
         [Required]
         public int TicketCount { get; set; }
 
+        public string CountryCode { get; set; }
+        public virtual Country Country { get; set; }
+
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
@@ -21,9 +24,9 @@ namespace ToursProject.Context.Models
         [Required]
         public bool IsActual { get; set; }
 
-        public ICollection<Hotel> Hotels { get; set; }
-        public ICollection<TypeTour> Types { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Hotel> Hotels { get; set; }
+        public virtual ICollection<TypeTour> Types { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         public Tour()
         {
