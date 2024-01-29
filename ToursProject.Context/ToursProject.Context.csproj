@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\Role.cs" />
-    <Compile Include="Migrations\202401271840486_Instal.cs" />
-    <Compile Include="Migrations\202401271840486_Instal.designer.cs">
-      <DependentUpon>202401271840486_Instal.cs</DependentUpon>
+    <Compile Include="Migrations\202401290630325_Instal.cs" />
+    <Compile Include="Migrations\202401290630325_Instal.designer.cs">
+      <DependentUpon>202401290630325_Instal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Country.cs" />
@@ -73,8 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401271840486_Instal.resx">
-      <DependentUpon>202401271840486_Instal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401290630325_Instal.resx">
+      <DependentUpon>202401290630325_Instal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

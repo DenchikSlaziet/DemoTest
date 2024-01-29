@@ -13,7 +13,7 @@ namespace ToursProject.Context.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202401271840486_Instal"; }
+            get { return "202401290630325_Instal"; }
         }
         
         string IMigrationMetadata.Source

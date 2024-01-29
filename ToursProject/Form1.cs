@@ -3,12 +3,14 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using ToursProject.Context;
 using ToursProject.Context.Models;
+using System.Collections.Generic;
 
 namespace ToursProject
 {
     public partial class Form1 : Form
     {
         private int allToursSum = 0;
+        private List<Tour> Tours = new List<Tour>();
         public Form1()
         {
             InitializeComponent();
@@ -37,12 +39,22 @@ namespace ToursProject
                 foreach (var item in tours)
                 {
                     var tourView = new TourView(item);
+                    tourView.AddToOrder += VisibleList;
                     tourView.Parent = flowLayoutPanel1;
 
                     allToursSum += (int)(item.Price * item.TicketCount);
                 }
 
                 label3.Text = $"Общая сумма: {allToursSum}руб.";
+            }
+        }
+
+        private void VisibleList(Tour tour)
+        {
+            Tours.Add(tour);
+            if(button1.Visible == false)
+            {
+                button1.Visible = true;
             }
         }
 
@@ -124,6 +136,10 @@ namespace ToursProject
             tourView.Parent = flowLayoutPanel1;
             allToursSum += (int)(tourView.tour.Price * tourView.tour.TicketCount);
             label3.Text = $"Общая сумма: {allToursSum}руб.";
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ToursProject
     public partial class TourView : UserControl
     {
         public Tour tour { get; set; }
+        public event Action<Tour> AddToOrder;
 
         public TourView(Tour tour)
         {
@@ -63,6 +64,14 @@ namespace ToursProject
                     db.SaveChanges();
                     InitialComponent(tour1);
                 }
+            }
+        }
+
+        private void добавитьКЗаказуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(tour.IsActual)
+            {
+                AddToOrder?.Invoke(tour);
             }
         }
     }

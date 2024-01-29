@@ -14,7 +14,6 @@ namespace ToursProject
         {
             InitializeComponent();
             comboBoxCountry.DisplayMember = nameof(Country.Name);
-            comboBoxCountry.ValueMember = nameof(Country.Code);
             checkedListBox1.DisplayMember = nameof(TypeTour.Name);
             Tour = new Tour();
             Initialize();
