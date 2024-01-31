@@ -16,6 +16,8 @@ namespace ToursProject
             InitializeComponent();
             comboBoxType.DisplayMember = nameof(TypeTour.Name);
             comboBoxType.ValueMember = nameof(TypeTour.Id);
+            buttonAdd.Enabled = !WorkToUser.CompareRole(Context.Enum.Role.Quest) 
+                && !WorkToUser.CompareRole(Context.Enum.Role.Client);
         }
 
         private void Form1_Load(object sender, System.EventArgs e)

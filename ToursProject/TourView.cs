@@ -33,6 +33,8 @@ namespace ToursProject
                 var image = Image.FromStream(new MemoryStream(tour.ImagePreview));
                 pictureBoxImage.Image = image;
             }
+            buttonEdit.Enabled = buttonReview.Enabled = !WorkToUser.CompareRole(Context.Enum.Role.Quest)
+                && !WorkToUser.CompareRole(Context.Enum.Role.Client);
         }
 
         private void buttonReview_Click(object sender, EventArgs e)

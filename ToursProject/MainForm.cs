@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ToursProject
@@ -15,6 +8,8 @@ namespace ToursProject
         public MainForm()
         {
             InitializeComponent();
+            label1.Text = $"{WorkToUser.User.LastName} {WorkToUser.User.FirstName} {WorkToUser.User.Patronymic}";
+            отелиToolStripMenuItem.Enabled = !WorkToUser.CompareRole(Context.Enum.Role.Meneger);
         }
 
         private void турыToolStripMenuItem_Click(object sender, EventArgs e)
