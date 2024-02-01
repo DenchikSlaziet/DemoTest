@@ -59,7 +59,7 @@
             // 
             this.textBoxSearch.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSearch.Location = new System.Drawing.Point(522, 39);
-            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(721, 31);
             this.textBoxSearch.TabIndex = 1;
@@ -81,7 +81,7 @@
             this.comboBoxType.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Location = new System.Drawing.Point(522, 120);
-            this.comboBoxType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(5);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(721, 30);
             this.comboBoxType.TabIndex = 3;
@@ -92,7 +92,7 @@
             this.checkBoxActual.AutoSize = true;
             this.checkBoxActual.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBoxActual.Location = new System.Drawing.Point(522, 199);
-            this.checkBoxActual.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.checkBoxActual.Margin = new System.Windows.Forms.Padding(5);
             this.checkBoxActual.Name = "checkBoxActual";
             this.checkBoxActual.Size = new System.Drawing.Size(253, 26);
             this.checkBoxActual.TabIndex = 4;
@@ -108,7 +108,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 297);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1453, 369);
             this.flowLayoutPanel1.TabIndex = 5;
@@ -128,7 +128,7 @@
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAdd.Location = new System.Drawing.Point(28, 213);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(5);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(225, 65);
             this.buttonAdd.TabIndex = 7;
@@ -139,7 +139,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(1071, 213);
+            this.button1.Location = new System.Drawing.Point(1155, 213);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(225, 65);
@@ -164,7 +164,7 @@
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

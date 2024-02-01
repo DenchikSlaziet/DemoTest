@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using ToursProject.AddForm;
@@ -9,89 +10,60 @@ namespace ToursProject
 {
     public partial class HotelForm : Form
     {
-        private int pageActual = 1;
-        private int pageSize = 3;
+        private int pageSize = 7;
+        private int oldCountPage = -1;
+        private readonly BindingSource bindingSource = new BindingSource();
 
         public HotelForm()
         {
             InitializeComponent();
+            bindingSource.CurrentItemChanged += Bs_CurrentItemChanged;
             dataGridView1.AutoGenerateColumns = false;
-            using (var db = new ToursContext())
-            {
-                Print();
-                buttonBack.Enabled = false;
-                buttonNext.Enabled = db.Hotels.Count() > pageSize;
-            }
-
+            Print();      
             buttonAdd.Enabled = buttonEdit.Enabled = buttonDeleted.Enabled = WorkToUser.CompareRole(Context.Enum.Role.Admin);
-
         }
 
-        private void buttonNext_Click(object sender, System.EventArgs e)
-        {
-            pageActual++;
-            Print();
-        }
 
         private void Print()
         {
             using (var db = new ToursContext())
             {
                 var count = db.Hotels.Count();
-                var countPage = count / pageSize;
-                labelCountPage.Text = count % pageSize == 0 ? countPage.ToString() : (++countPage).ToString();
-                toolStripStatusLabelAllCount.Text = $"Кол-во записей {count}";
-                if (pageActual > countPage)
+                var countPage = (int)Math.Ceiling((decimal)count / pageSize);
+
+                if(oldCountPage != countPage)
                 {
-                    --pageActual;
+                    oldCountPage = countPage;
+                    var current = bindingSource.Position;
+
+                    if(current > countPage)
+                    {
+                        current = countPage;
+                    }
+
+                    bindingSource.DataSource = Enumerable.Range(1, countPage);
+
+                    if(current != -1)
+                    {
+                        bindingSource.Position = current;
+                    }
+
+                    bindingNavigator1.BindingSource = bindingSource;
                 }
-                dataGridView1.DataSource = db.Hotels.Include(x => x.Country).ToList().Skip((pageActual - 1) * pageSize).Take(pageSize).ToList();
-                buttonNext.Enabled = buttonEndCount.Enabled = count > pageSize * pageActual;
-                buttonBack.Enabled = buttonStartCount.Enabled = pageActual > 1;
-                labelActual.Text = pageActual.ToString();
+
+                dataGridView1.DataSource = db.Hotels.Include(x => x.Country)
+                    .OrderBy(x => x.Title)
+                    .Skip(bindingSource.Position * pageSize)
+                    .Take(pageSize)
+                    .ToList();
             }
         }
 
-        private void buttonBack_Click(object sender, System.EventArgs e)
+        private void Bs_CurrentItemChanged(object sender, EventArgs e)
         {
-            pageActual--;
             Print();
         }
-
-        private void buttonAdd_Click(object sender, System.EventArgs e)
-        {
-            var Hotel = new Hotel
-            {
-                CountOfStars = 1,
-                CountryCode = "RU",
-                Title = "Test"
-            };
-
-            using (var db = new ToursContext())
-            {
-                db.Hotels.Add(Hotel);
-                db.SaveChanges();
-            }
-            Print();
-        }
-
-        private void buttonStartCount_Click(object sender, System.EventArgs e)
-        {
-            pageActual = 1;
-            Print();
-        }
-
-        private void buttonEndCount_Click(object sender, System.EventArgs e)
-        {
-            using (var db = new ToursContext())
-            {
-                var count = db.Hotels.Count();
-                var countPage = count / pageSize;
-                pageActual = count % pageSize == 0 ? countPage : ++countPage;
-            }
-            Print();
-        }
-
+                       
         private void buttonDeleted_Click(object sender, System.EventArgs e)
         {
             var hotel = (Hotel)dataGridView1.SelectedRows[0].DataBoundItem;

@@ -21,6 +21,9 @@ namespace ToursProject.AddForm
             textBoxTitle.Text = hotel.Title;
             textBoxDescription.Text = hotel.Description;
             numericUpDown1.Value = Hotel.CountOfStars;
+            comboBox1.SelectedItem = comboBox1.Items.Cast<Country>()
+                .FirstOrDefault(x => x.Code == Hotel.CountryCode);
+            
         }
 
         private void Init()
