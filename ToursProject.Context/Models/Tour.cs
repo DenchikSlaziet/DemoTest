@@ -35,5 +35,23 @@ namespace ToursProject.Context.Models
             Types = new List<TypeTour>();
         }
 
+        public override int GetHashCode()
+         => Id.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false; 
+            }
+            
+            if(obj is Tour tour) 
+            { 
+                return tour.Id.Equals(Id);
+            }
+
+            return false;
+        }
+
     }
 }

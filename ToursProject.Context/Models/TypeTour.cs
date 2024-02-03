@@ -17,5 +17,10 @@ namespace ToursProject.Context.Models
         {
             Tours = new List<Tour>();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

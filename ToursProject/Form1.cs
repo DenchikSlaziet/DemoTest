@@ -10,7 +10,7 @@ namespace ToursProject
     public partial class Form1 : Form
     {
         private int allToursSum = 0;
-        private Dictionary<int, int> Tours = new Dictionary<int, int>();
+        private Dictionary<Tour, int> Tours = new Dictionary<Tour, int>();
         public Form1()
         {
             InitializeComponent();
@@ -53,13 +53,13 @@ namespace ToursProject
 
         private void VisibleList(Tour tour)
         {
-            if(Tours.TryGetValue(tour.Id, out var count))
+            if(Tours.TryGetValue(tour, out var count))
             {
-                Tours[tour.Id] = ++count;
+                Tours[tour] = ++count;
             }
             else
             {
-                Tours.Add(tour.Id, 1);
+                Tours.Add(tour, 1);
             }
           
             if(button1.Visible == false)
@@ -150,6 +150,8 @@ namespace ToursProject
 
         private void button1_Click(object sender, System.EventArgs e)
         {
+            var form = new OrderForm(Tours);
+            form.ShowDialog();
         }
     }
 }
