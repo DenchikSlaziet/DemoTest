@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelSum = new System.Windows.Forms.Label();
             this.labelSale = new System.Windows.Forms.Label();
+            this.buttonTakeOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -117,11 +118,23 @@
             this.labelSale.TabIndex = 7;
             this.labelSale.Text = "0 руб.";
             // 
+            // buttonTakeOrder
+            // 
+            this.buttonTakeOrder.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonTakeOrder.Location = new System.Drawing.Point(12, 501);
+            this.buttonTakeOrder.Name = "buttonTakeOrder";
+            this.buttonTakeOrder.Size = new System.Drawing.Size(252, 34);
+            this.buttonTakeOrder.TabIndex = 8;
+            this.buttonTakeOrder.Text = "Оформить заказ";
+            this.buttonTakeOrder.UseVisualStyleBackColor = true;
+            this.buttonTakeOrder.Click += new System.EventHandler(this.buttonTakeOrder_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 543);
+            this.Controls.Add(this.buttonTakeOrder);
             this.Controls.Add(this.labelSale);
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.label1);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.Label labelSale;
+        private System.Windows.Forms.Button buttonTakeOrder;
     }
 }

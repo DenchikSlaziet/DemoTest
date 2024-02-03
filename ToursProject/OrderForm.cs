@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Windows.Forms;
 using ToursProject.Context;
 using ToursProject.Context.Models;
@@ -46,10 +48,45 @@ namespace ToursProject
                 if(item is OrderView order)
                 {
                     sum += order.Tour.Price * order.Count;
+
+                    if(Tours.TryGetValue(order.Tour, out var count))
+                    {
+                        Tours[order.Tour] = order.Count;
+                    }
                 }
             }
 
             labelSum.Text = $"{sum}руб.";
+        }
+
+        private void buttonTakeOrder_Click(object sender, EventArgs e)
+        {
+            var random = new Random();
+            var order = new Order
+            {
+                OrderDate = DateTimeOffset.Now,
+                AllSale = 0,
+                Price = sum,
+                Code = random.Next(100,1000),
+                ReceivingPointId = ((ReceivingPoint)comboBox1.SelectedItem).Id,
+                DateReceipt = DateTimeOffset.Now.AddDays(3)
+            };
+
+            if (!WorkToUser.CompareRole(Context.Enum.Role.Quest))
+            {
+                order.UserId = WorkToUser.User.Id;
+            }
+           
+            using(var db = new ToursContext())
+            {
+                var ids = Tours.Keys.Select(x => x.Id).ToList();
+                var tours = db.Tours.Include(x => x.Country).Where(x => ids.Contains(x.Id)).ToList();
+                order.Tours = tours;
+                db.Orders.Add(order);
+                db.SaveChanges();
+                MessageBox.Show("Вы успешно оформили заказ!");
+                this.Close();
+            }
         }
     }
 }

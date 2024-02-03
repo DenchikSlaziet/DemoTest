@@ -15,6 +15,7 @@ namespace ToursProject
                 {
                     user = new User()
                     {
+                        Id = -1,
                         FirstName = "Неавторизованный гость",
                         LastName = string.Empty,
                         Patronymic = string.Empty,
