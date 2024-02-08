@@ -62,7 +62,7 @@ namespace ToursProject
                 Tours.Add(tour, 1);
             }
           
-            if(button1.Visible == false)
+            if(!button1.Visible)
             {
                 button1.Visible = true;
             }
@@ -151,7 +151,11 @@ namespace ToursProject
         private void button1_Click(object sender, System.EventArgs e)
         {
             var form = new OrderForm(Tours);
-            form.ShowDialog();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                Tours.Clear();
+                button1.Visible = false;
+            }
         }
     }
 }

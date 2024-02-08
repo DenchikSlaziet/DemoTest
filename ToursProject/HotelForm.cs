@@ -56,6 +56,8 @@ namespace ToursProject
                     .Skip(bindingSource.Position * pageSize)
                     .Take(pageSize)
                     .ToList();
+
+                toolStripStatusLabelAllCount.Text = $"Кол-во записей: {count}";
             }
         }
 

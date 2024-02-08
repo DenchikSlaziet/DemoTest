@@ -28,5 +28,10 @@ namespace ToursProject.Context.Models
 
         public virtual ICollection<HotelComment> HotelComments { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return $"{LastName} {FirstName} {Patronymic}";
+        }
     }
 }

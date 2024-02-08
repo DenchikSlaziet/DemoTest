@@ -87,6 +87,8 @@ namespace ToursProject
                 MessageBox.Show("Вы успешно оформили заказ!");
                 this.Close();
             }
+
+            DialogResult = DialogResult.OK;
         }
     }
 }

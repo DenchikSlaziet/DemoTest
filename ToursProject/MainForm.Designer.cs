@@ -33,6 +33,7 @@
             this.турыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отелиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.заказыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             // 
             this.тToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.турыToolStripMenuItem,
-            this.отелиToolStripMenuItem});
+            this.отелиToolStripMenuItem,
+            this.заказыToolStripMenuItem});
             this.тToolStripMenuItem.Name = "тToolStripMenuItem";
             this.тToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.тToolStripMenuItem.Text = "Формы";
@@ -58,14 +60,14 @@
             // турыToolStripMenuItem
             // 
             this.турыToolStripMenuItem.Name = "турыToolStripMenuItem";
-            this.турыToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.турыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.турыToolStripMenuItem.Text = "Туры";
             this.турыToolStripMenuItem.Click += new System.EventHandler(this.турыToolStripMenuItem_Click);
             // 
             // отелиToolStripMenuItem
             // 
             this.отелиToolStripMenuItem.Name = "отелиToolStripMenuItem";
-            this.отелиToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.отелиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отелиToolStripMenuItem.Text = "Отели";
             this.отелиToolStripMenuItem.Click += new System.EventHandler(this.отелиToolStripMenuItem_Click);
             // 
@@ -79,6 +81,13 @@
             this.label1.Size = new System.Drawing.Size(65, 22);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            // 
+            // заказыToolStripMenuItem
+            // 
+            this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
+            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заказыToolStripMenuItem.Text = "Заказы";
+            this.заказыToolStripMenuItem.Click += new System.EventHandler(this.заказыToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -104,5 +113,6 @@
         private System.Windows.Forms.ToolStripMenuItem турыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отелиToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem;
     }
 }
