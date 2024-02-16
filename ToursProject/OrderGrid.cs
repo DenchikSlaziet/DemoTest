@@ -30,10 +30,10 @@ namespace ToursProject
 
                 foreach (var item in tours)
                 {
-                    sb.Append($"{item.Title} ");
+                    sb.Append($"{item.Title}, ");
                 }
 
-                e.Value = sb.ToString();
+                e.Value = sb.ToString().Remove(sb.Length - 2, 2);
             }
         }
 

@@ -51,7 +51,7 @@
             this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(510, 23);
+            this.labelTitle.Size = new System.Drawing.Size(359, 23);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -64,19 +64,19 @@
             this.tableLayoutPanel1.Controls.Add(this.labelActual, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelCount, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonEdit, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 334);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 311);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(507, 151);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 116);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // buttonReview
             // 
             this.buttonReview.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonReview.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonReview.Location = new System.Drawing.Point(304, 91);
+            this.buttonReview.Location = new System.Drawing.Point(183, 65);
             this.buttonReview.Name = "buttonReview";
             this.buttonReview.Size = new System.Drawing.Size(152, 44);
             this.buttonReview.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.labelActual.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelActual.AutoSize = true;
             this.labelActual.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelActual.Location = new System.Drawing.Point(126, 28);
+            this.labelActual.Location = new System.Drawing.Point(86, 19);
             this.labelActual.Name = "labelActual";
             this.labelActual.Size = new System.Drawing.Size(0, 19);
             this.labelActual.TabIndex = 0;
@@ -99,7 +99,7 @@
             this.labelCount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCount.AutoSize = true;
             this.labelCount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCount.Location = new System.Drawing.Point(380, 28);
+            this.labelCount.Location = new System.Drawing.Point(259, 19);
             this.labelCount.Name = "labelCount";
             this.labelCount.Size = new System.Drawing.Size(0, 19);
             this.labelCount.TabIndex = 1;
@@ -108,7 +108,7 @@
             // 
             this.buttonEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonEdit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEdit.Location = new System.Drawing.Point(52, 94);
+            this.buttonEdit.Location = new System.Drawing.Point(12, 68);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(149, 38);
             this.buttonEdit.TabIndex = 2;
@@ -120,9 +120,9 @@
             // 
             this.labelPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPrice.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPrice.Location = new System.Drawing.Point(0, 297);
+            this.labelPrice.Location = new System.Drawing.Point(3, 261);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(510, 19);
+            this.labelPrice.Size = new System.Drawing.Size(347, 19);
             this.labelPrice.TabIndex = 3;
             this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -137,9 +137,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxImage.ContextMenuStrip = this.contextMenuStrip1;
             this.pictureBoxImage.Image = global::ToursProject.Properties.Resources.picture;
-            this.pictureBoxImage.Location = new System.Drawing.Point(0, 45);
+            this.pictureBoxImage.Location = new System.Drawing.Point(0, 34);
             this.pictureBoxImage.Name = "pictureBoxImage";
-            this.pictureBoxImage.Size = new System.Drawing.Size(510, 235);
+            this.pictureBoxImage.Size = new System.Drawing.Size(350, 211);
             this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage.TabIndex = 1;
             this.pictureBoxImage.TabStop = false;
@@ -149,12 +149,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьКЗаказуToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 26);
             // 
             // добавитьКЗаказуToolStripMenuItem
             // 
             this.добавитьКЗаказуToolStripMenuItem.Name = "добавитьКЗаказуToolStripMenuItem";
-            this.добавитьКЗаказуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьКЗаказуToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.добавитьКЗаказуToolStripMenuItem.Text = "Добавить к заказу";
             this.добавитьКЗаказуToolStripMenuItem.Click += new System.EventHandler(this.добавитьКЗаказуToolStripMenuItem_Click);
             // 
@@ -167,7 +167,7 @@
             this.Controls.Add(this.pictureBoxImage);
             this.Controls.Add(this.labelTitle);
             this.Name = "TourView";
-            this.Size = new System.Drawing.Size(510, 488);
+            this.Size = new System.Drawing.Size(359, 441);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();

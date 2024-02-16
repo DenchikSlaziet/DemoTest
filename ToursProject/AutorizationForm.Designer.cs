@@ -121,7 +121,7 @@
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.label1);
             this.Name = "AutorizationForm";
-            this.Text = "AutorizationForm";
+            this.Text = "Авторизация";
             this.ResumeLayout(false);
             this.PerformLayout();
 

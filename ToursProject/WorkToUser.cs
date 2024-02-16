@@ -19,7 +19,7 @@ namespace ToursProject
                         FirstName = "Неавторизованный гость",
                         LastName = string.Empty,
                         Patronymic = string.Empty,
-                        Role = Role.Admin
+                        Role = Role.Quest
                     };
                 }
                 return user;

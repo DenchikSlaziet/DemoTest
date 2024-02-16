@@ -143,8 +143,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.MaximumSize = new System.Drawing.Size(1263, 582);
+            this.MinimumSize = new System.Drawing.Size(1263, 582);
             this.Name = "OrderForm";
-            this.Text = "TestForm";
+            this.Text = "Оформление заказа";
             this.ResumeLayout(false);
             this.PerformLayout();
 
